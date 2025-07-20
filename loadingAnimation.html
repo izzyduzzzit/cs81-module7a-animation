@@ -16,20 +16,20 @@
   <script>
     // Function to run the loading animation
     function runLoadingAnimation() {
-      // Gets references to the loader and status div elements above
+      // Gets references to the loader and status div elements above and stores them in constants
       const loader = document.getElementById("loader");
       const status = document.getElementById("status");
 
       // Array of frames for the loading animation with emojis and dots
       const frames = ["⏳", "⌛", ".", "..", "..."];
       // Initialize index and cycle count and maxCycles to control animation duration
-      let index = 0;
-      let cycleCount = 0;
-      const maxCycles = 10;
+      let index = 0; // Index variable to track the current frame
+      let cycleCount = 0; // Count of completed cycles through the frames and store it in a variable
+      const maxCycles = 10; // Maximum number of cycles before stopping the animation and store it in a constant
 
       // Use setInterval to set an interval to update the loader text every 500 milliseconds
       const interval = setInterval(() => {
-        // Update the loader text to the current frame based on the index
+        // Update the loader text via the DOM to the current frame based on the index using the loader constant created earlier
         loader.textContent = frames[index % frames.length];
         // Increment the index and check if a full cycle of frames has completed
         index++;
@@ -39,12 +39,12 @@
         }
         if (cycleCount >= maxCycles) {
           // Stop the animation using clearInterval after cyclecount equals maxCycles and show completion message
-          clearInterval(interval);
+          clearInterval(interval); // Stop the interval to end the animation using clearInterval after 10 cycles through of iterations through the frames array
           loader.textContent = "✅";
-          // Update the status text to "Done!" when the animation completes
+          // Update the status text via the DOM to "Done!" when the animation completes via the status constant created earlier
           status.textContent = "Done!";
         }
-      }, 500);
+      }, 500); // 500 milliseconds interval for the animation speed used by setInterval
     }
 
     // Start the loading animation by calling the function created above
