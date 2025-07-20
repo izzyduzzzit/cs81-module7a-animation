@@ -7,34 +7,47 @@
   <title>Loading Animation Simulator</title>
 </head>
 <body style="font-family: monospace; text-align: center; padding-top: 100px; background-color: #f4f4f4;">
-
+  
+  <!-- This div displays the loading animation including the emojis -->
   <div id="loader" style="font-size: 2rem; margin-bottom: 20px;">Loading...</div>
+  <!-- This div displays the loading status message below the emoji animation -->
   <div id="status">Please wait</div>
 
   <script>
+    // Function to run the loading animation
     function runLoadingAnimation() {
+      // Gets references to the loader and status div elements above
       const loader = document.getElementById("loader");
       const status = document.getElementById("status");
 
+      // Array of frames for the loading animation with emojis and dots
       const frames = ["⏳", "⌛", ".", "..", "..."];
+      // Initialize index and cycle count and maxCycles to control animation duration
       let index = 0;
       let cycleCount = 0;
       const maxCycles = 10;
 
+      // Use setInterval to set an interval to update the loader text every 500 milliseconds
       const interval = setInterval(() => {
+        // Update the loader text to the current frame based on the index
         loader.textContent = frames[index % frames.length];
+        // Increment the index and check if a full cycle of frames has completed
         index++;
+        // Increment cycleCount each time a full cycle of frames is completed
         if (index % frames.length === 0) {
           cycleCount++;
         }
         if (cycleCount >= maxCycles) {
+          // Stop the animation using clearInterval after cyclecount equals maxCycles and show completion message
           clearInterval(interval);
           loader.textContent = "✅";
+          // Update the status text to "Done!" when the animation completes
           status.textContent = "Done!";
         }
       }, 500);
     }
 
+    // Start the loading animation by calling the function created above
     runLoadingAnimation();
   </script>
 
