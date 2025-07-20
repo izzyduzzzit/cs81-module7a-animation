@@ -22,9 +22,12 @@
 
       // Array of frames for the loading animation with emojis and dots
       const frames = ["⏳", "⌛", ".", "..", "..."];
+      // const frames = ["⏳", "⌛", ".", "..", "...", "....", "....."]; One creative suggestion is to add two additional emojis to the frames array to give us a little more time for loading
+      
       // Initialize index and cycle count and maxCycles to control animation duration
       let index = 0; // Index variable to track the current frame
-      let cycleCount = 0; // Count of completed cycles through the frames and store it in a variable
+      let cycleCount = 5; // Count of completed cycles through the frames and store it in a variable
+      // One new feature to change behavior is I am initializing cycleCount to 5 so the animation will only run 5 more cycles before completing
       const maxCycles = 10; // Maximum number of cycles before stopping the animation and store it in a constant
 
       // Use setInterval to set an interval to update the loader text every 500 milliseconds
